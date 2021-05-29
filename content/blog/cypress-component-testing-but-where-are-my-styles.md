@@ -1,5 +1,5 @@
 ---
-path: /cypress/testing-with-webpack-but-where-are-my-styles
+path: testing-with-webpack-but-where-are-my-styles
 date: 2021-05-28T23:56:16.004Z
 title: Cypress Component Testing, but where are my styles?!
 description: A quick walkthrough of what I did in order to get Cypress Component
