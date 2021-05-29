@@ -5,13 +5,13 @@ title: Cypress Component Testing, but where are my styles?!
 description: A quick walkthrough of what I did in order to get Cypress Component
   testing to work with custom styles
 ---
-If you're as excited as I am about [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction), but are wondering why your styles aren't loading.
+If you're as excited as I am about [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction), but are wondering why your styles aren't loading, then keep reading.
 
-We happen to use WebPack to bundle our files, Cypress component testing has fantastic support for using your existing WebPack configuration. In our app, we happen to load a `boostrap.scss` file as part of the main entry.
+We happen to use webpack to bundle our files. Cypress component testing has fantastic support for using your existing webpack configuration. In our app, we happen to load a `boostrap.scss` file as part of the main app entry.
 
-I recently figured out that Cypress loads their own `browser.js` file in the entry and will override your default webpack configuration entry. Which makes sense, given that we're testing individual components.
+Cypress overrides the webpack configuration entry with their own `browser.js` file, which makes sense, given that we're testing individual components.
 
-If you're running a React application, bundled by webpack, you will likely You will need to configure a `cypress/plugins/index.js` file with [@cypress/webpack-dev-server](https://github.com/cypress-io/cypress/tree/develop/npm/webpack-dev-server)
+If you're running a React application, bundled by webpack, you will need to configure a `cypress/plugins/index.js` file with [@cypress/webpack-dev-server](https://github.com/cypress-io/cypress/tree/develop/npm/webpack-dev-server)
 
 If you want your custom styles loaded as part of this, you'll need to override the `template` option, with a custom template file.
 
