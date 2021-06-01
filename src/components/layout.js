@@ -6,66 +6,20 @@ import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/blog/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
+    const { title, children } = this.props
     return (
       <Wrapper>
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
-          <header>{header}</header>
+        <Content>
+          <header>
+            <h1>{title}</h1>
+            <nav>
+              <Link to="/">Home</Link>
+              <Link to="/blog">Blog</Link>
+            </nav>
+          </header>
           <main>{children}</main>
-        </div>
+        </Content>
+
         <Footer>
           © {new Date().getFullYear()}, Built with
           {` `}
@@ -75,6 +29,48 @@ class Layout extends React.Component {
     )
   }
 }
+
+const Content = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rhythm(24)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  align-items: center;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  header h1 {
+    margin-top: 0;
+    order: 1;
+  }
+
+  header h1,
+  header nav {
+    margin-bottom: ${rhythm(1.5)};
+  }
+
+  nav a {
+    padding: ${rhythm(3 / 4)};
+  }
+
+  nav [aria-current] {
+    color: #000;
+  }
+
+  @media (min-width: 480px) {
+    header {
+      flex-direction: row;
+    }
+
+    header h1 {
+      order: 0;
+    }
+  }
+`
 
 const Wrapper = styled.div`
   min-height: 100vh;
