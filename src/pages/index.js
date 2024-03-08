@@ -22,15 +22,13 @@ class IndexPage extends React.Component {
           ]}
         />
         <p>Hi,</p>
-        <p>I'm Antonio.</p>
+        <p>I'm Antonio. (he/him)</p>
         <p>
-          I'll be sharing{" "}
-          <Link to="/blog/">thoughts, notes and perhaps information</Link> that
-          may or may not be useful to you.
+          I'll be real with you, I don't rite much at the moment.
         </p>
-        <Link to="/blog/">
-          <Button marginTop="35px">Check out my blog</Button>
-        </Link>
+        <p>
+          The idea was to use this as a place to capture <Link to="/blog/">thoughts, notes and perhaps information</Link> that I would find useful in the future.
+        </p>
       </Layout>
     )
   }
